@@ -8,14 +8,14 @@ class MyFirstNode(Node):
     def __init__(self):
         super().__init__('my_first_node')
         self.get_logger().info('Привет из ROS 2!')
+        self.create_timer(0.5, self.slow_timer_callback)
+        self.create_timer(0.2, self.fast_timer_callback)
 
-        self.counter = 0
-        self.create_timer(0.5, self.timer_callback)
-
-    def timer_callback(self):
-        self.counter += 1
-        current_time = localtime()
-        self.get_logger().info(f'Таймер сработал {self.counter}. Время {strftime("%H:%M:%S", current_time)}')
+    def fast_timer_callback(self):
+        self.get_logger().info('Fast timer')
+        
+    def slow_timer_callback(self):
+        self.get_logger().info('Slow timer')
                                
                                
 def main(args=None):
