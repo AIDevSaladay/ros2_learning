@@ -2,6 +2,7 @@
 
 import rclpy
 from rclpy.node import Node
+from time import strftime, localtime
 
 class MyFirstNode(Node):
     def __init__(self):
@@ -9,11 +10,12 @@ class MyFirstNode(Node):
         self.get_logger().info('Привет из ROS 2!')
 
         self.counter = 0
-        self.create_timer(1.0, self.timer_callback)
+        self.create_timer(0.5, self.timer_callback)
 
     def timer_callback(self):
         self.counter += 1
-        self.get_logger().info(f'Таймер сработал {self.counter}')
+        current_time = localtime()
+        self.get_logger().info(f'Таймер сработал {self.counter}. Время {strftime("%H:%M:%S", current_time)}')
                                
                                
 def main(args=None):
