@@ -32,6 +32,8 @@ setup(
             'car = my_robot_controller.car:main',
             'battery_simulator = my_robot_controller.battery_simulator:main',
             'battery_monitor = my_robot_controller.battery_monitor:main',
+            'number_publisher = my_robot_controller.number_publisher:main',
+            'number_counter = my_robot_controller.number_counter:main',
         ],
     },
 )
