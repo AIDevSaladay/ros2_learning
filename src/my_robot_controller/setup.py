@@ -30,6 +30,8 @@ setup(
             'smartphone = my_robot_controller.smartphone:main',
             'traffic_light = my_robot_controller.traffic_light:main',
             'car = my_robot_controller.car:main',
+            'battery_simulator = my_robot_controller.battery_simulator:main',
+            'battery_monitor = my_robot_controller.battery_monitor:main',
         ],
     },
 )
