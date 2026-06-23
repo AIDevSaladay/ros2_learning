@@ -28,6 +28,8 @@ setup(
             'my_second_node = my_robot_controller.my_second_node:main',
             'robot_news_station = my_robot_controller.robot_news_station:main',
             'smartphone = my_robot_controller.smartphone:main',
+            'traffic_light = my_robot_controller.traffic_light:main',
+            'car = my_robot_controller.car:main',
         ],
     },
 )
