@@ -41,6 +41,7 @@ setup(
             'battery_node = my_robot_controller.battery_node:main',
             'motor_simulator = my_robot_controller.motor_simulator:main',
             'system_monitor = my_robot_controller.system_monitor:main',
+            'temperature_sensor = my_robot_controller.temperature_sensor:main',
         ],
     },
 )

@@ -17,7 +17,7 @@ class MotorSimulator(Node):
         
         self.cmd_subscriber = self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
         self.battery_subscriber = self.create_subscription(Float32, '/battery_level', self.battery_callback, 10)
-        self.state_publisher = self.create_publisher(Bool, '/morot_state', 10)
+        self.state_publisher = self.create_publisher(Bool, '/motor_state', 10)
         
         self.timer = self.create_timer(0.5, self.publish_state)
         self.get_logger().info('Motor Simulator started')

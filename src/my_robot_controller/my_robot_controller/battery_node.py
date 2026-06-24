@@ -12,7 +12,7 @@ class BatteryNode(Node):
         self.battery_level = 100.0
         self.is_robot_moving = False
         self.battery_publisher = self.create_publisher(Float32, '/battery_level', 10)
-        self.motor_subscriber = self.create_subscription(Bool, '/morot_state', self.motor_state_callback, 10)
+        self.motor_subscriber = self.create_subscription(Bool, '/motor_state', self.motor_state_callback, 10)
         self.timer = self.create_timer(2.0, self.update_battery)
         self.get_logger().info('Battery Node started - Initial charge 100%')
         
