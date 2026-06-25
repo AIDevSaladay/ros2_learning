@@ -16,11 +16,17 @@ class MotorSimulator(Node):
         self.is_moving = False
         
         self.cmd_subscriber = self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
+        self.distance_subscriber = self.create_subscription(Float32, '/distance', self.distance_callback, 10)
         self.battery_subscriber = self.create_subscription(Float32, '/battery_level', self.battery_callback, 10)
         self.state_publisher = self.create_publisher(Bool, '/motor_state', 10)
         
         self.timer = self.create_timer(0.5, self.publish_state)
         self.get_logger().info('Motor Simulator started')
+    
+    def distance_callback(self, msg):
+        if msg.data < 0.5:
+            self.is_moving = False
+            self.get_logger().error('ERROR! Motor stopping')
         
     def battery_callback(self, msg: Float32):
         self.battery_level = msg.data

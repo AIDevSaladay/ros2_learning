@@ -32,4 +32,10 @@ def generate_launch_description():
             executable='charging_station',
             name='charging_station',
             output='screen'),
+        
+        Node(
+            package='my_robot_controller',
+            executable='distance_sensor',
+            name='distance_sensor',
+            output='screen'),
     ])
