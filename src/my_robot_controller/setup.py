@@ -42,6 +42,8 @@ setup(
             'motor_simulator = my_robot_controller.motor_simulator:main',
             'system_monitor = my_robot_controller.system_monitor:main',
             'temperature_sensor = my_robot_controller.temperature_sensor:main',
+            'charging_station = my_robot_controller.charging_station:main',
+            
         ],
     },
 )

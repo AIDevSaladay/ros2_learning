@@ -26,4 +26,10 @@ def generate_launch_description():
             executable='temperature_sensor',
             name='temperature_sensor',
             output='screen'),
+        
+        Node(
+            package='my_robot_controller',
+            executable='charging_station',
+            name='charging_station',
+            output='screen'),
     ])

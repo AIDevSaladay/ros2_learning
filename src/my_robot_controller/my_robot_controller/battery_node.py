@@ -1,4 +1,4 @@
-#!/user/bin/env python3
+#!/usr/bin/env python3
 
 import rclpy
 from rclpy.node import Node
@@ -11,10 +11,15 @@ class BatteryNode(Node):
         
         self.battery_level = 100.0
         self.is_robot_moving = False
+        self.is_charging = False
         self.battery_publisher = self.create_publisher(Float32, '/battery_level', 10)
         self.motor_subscriber = self.create_subscription(Bool, '/motor_state', self.motor_state_callback, 10)
+        self.charging_subscriber = self.create_subscription(Bool, '/charging_command', self.chargin_callback, 10)
         self.timer = self.create_timer(2.0, self.update_battery)
         self.get_logger().info('Battery Node started - Initial charge 100%')
+    
+    def chargin_callback(self, msg: Bool):
+        self.is_charging = msg.data
         
     def motor_state_callback(self, msg):
         self.is_robot_moving = msg.data
@@ -22,6 +27,11 @@ class BatteryNode(Node):
         self.get_logger().info(f'Motor state changed: {state}')
         
     def update_battery(self):
+        if self.is_charging:
+            self.battery_level += 10
+        if self.battery_level > 100:
+            self.battery_level = 100
+            
         if self.battery_level <= 0.0:
             self.battery_level = 0.0
             self.get_logger().error('Battery depleted! Robot shutdown')
